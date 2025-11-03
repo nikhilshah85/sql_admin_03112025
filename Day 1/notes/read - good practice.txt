@@ -1,0 +1,5 @@
+Good practice for admin logins
+
+1. do not remember the password
+2. after installation, good practice is to disable the login for user sa
+	hacker has to guess the username and password both right, If you disable sa login you are half safe already 

@@ -1,0 +1,4 @@
+A - Atomacity (making sure transactions and safe, uninterrupted and completes)
+C - Consistency (health of server over a period of years
+I - Isolation (helps in performance of query executions, avoiding locks and deadlocks)
+D - Durability (helps you to understand and plan backup stratergies) 

@@ -1,0 +1,84 @@
+create database Banking -- success
+		this will have .mdf and .ldf file
+
+you can have a table - just structure is enough
+--you will need a login to partition the data into another file
+
+--which is a script and it will have a .ndf file, (you can also add this from the sql server explorer)
+
+--------------------------------------------------------------------------------------------------------
+
+1 database can have only 1 .mdf file
+optionally you can segegrate data into a separate file (which stores data only, other information like
+	schema, rights, roles, etc... are still stored in the main (.mdf file)
+	called as a secondary master data file (.ndf)
+
+
+============================================================================
+		if a transaction is fired on a row (or a row has become a part of transaction) - how should that row be dealt with from front end or other apps
+
+
+	i boutght a phone and made a payment of 18, still transaction is going 
+	18000 (for a phone is paid ) - balance was 60000 (so now it would be 42,000)
+
+			if user logs from other devise when the transaction is still going on - what u want to show user 
+			42k (after transaction is commited - when isolation level is set to read commited)
+			60k (when isolation level is read uncommitted)
+			make him/her wait
+
+	
+	at the same time, also from google pay, transferred 20k to a friend (22K) 
+
+		what do u want to show ?
+		60k (if isolation level us read uncommited - dirty read)
+		42k (after transaction is commited - when isolation level is set to read commited) - applicable when repatable read is set on 
+		22k (after transaction is commited - when isolation level is set to read commited) - show this when previous 1 and this 1 are commited
+		make wait
+		
+	Serializable - highest level of isolation level 
+
+		update employee set salary = salary * 1.1 (this will run on 20 lakh records) - when this was running, 
+		lots of employee tried to check their salaries 
+
+		till the time entire table is updated/commited it will show old data to everyone
+		lets say employee no 5 and empno 18,99,001 are standing next to each other, both had salary of 10,000 (new will be 11)
+		they are checking the salaries at the same time
+
+		server started execution of query, went from 1 to 14,00,000 with no problem, but some wait to taking time after 14x which could be 3-4 mins
+		or may be some time 
+
+
+		if i apply for a leave of 3 days = (i had 10 available)
+		it goes to manager (manager sees 10 days available) - they are viewing the snapshot copy
+		I see only 7 days (only me who will see the change) - and I will not be able to further modify it, unless I cancel and release the row lock
+		HR sees 10 days - they see a snapshot copy 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
