@@ -1,0 +1,21 @@
+We have a database system - FRetailGrocessaryStoreDB
+we need to have a tables as below
+	a. stockinfo (this will be list of stock having stockId, stokName,category,price, 					availQty,discountrate) (have atleast 2000 records)
+	b. sales table which will record daily sales
+		columns (saleid(autogenerate), stockID, qty)
+
+
+	create this in a database and we want all the operations to be as fast as possible
+
+	a. database 1 - will have both tables, with no index			
+		design and fire some obvious queries and create a report of performance on this and give 
+		recommendations in a recommendation column
+	b. database 2 - will have both tables, with Index			
+		design and fire some obvious queries and create a report of performance on this and give 
+		recommendations in a recommendation column
+
+	c. database 3 - will have both tables, in memory OLTP			
+		design and fire some obvious queries and create a report of performance on this and give 
+		recommendations in a recommendation column
+-------------------------------------------------------------------------------------------------------
+		create a presentation to convinence the business to explain the importance to having this 			feature	

@@ -1,0 +1,41 @@
+Clustured Index (based on primary key) (created and maintained by server) 
+Non-Clustured index (based on a column) (created and maintained by admins)
+
+	
+	select * from flighttable where airlines like 'jet%'
+	eg. airlines	
+	create index idx_flighttable_airlines
+	on flighttable(airlines)
+	include flightno,source,destiantion,cost
+
+
+	select * from flighttable where source = 'Mumbai' and destination = 'Chennai'
+		thus our index will be based on 2 columns 
+		(this is called as a composite index)
+
+	create index idx_flighttable_source_destiantion
+	on flighttable(source,destianation)
+	include flightno,cost,airlines
+
+
+	-----------------------------------------
+		select * from flighttable where airlines = 'jet airways' (need an index on airlines)
+		
+	select * from flighttable where source = 'Mumbai' and destination = 'Chennai'
+									order by airlines
+								(need index on source, destination and 									airlines)
+
+		initital data size before index was 50MB
+		after index
+			1. 150MB (storage)	
+			2. when airlines column goes thorough modification of data
+				need to rebuild 2 airlines (in huge data(tb's of data) is an overhead
+
+
+
+
+
+			
+
+
+	

@@ -1,0 +1,96 @@
+CREATE TABLE [dbo].[Claim](
+	[ID] [bigint] NOT NULL primary key identity,
+	[ClaimNumber] [varchar](50) NULL,
+	[Claimstatus] [varchar](50) NULL,
+	[claimamount] [int] NULL,
+	[datetransaction] [date] NULL,
+	[city] [varchar](50) NULL 
+)
+
+------------
+create procedure newClaim
+as
+begin
+declare @claimno int = 0
+declare @claimstatus varchar(20)
+declare @claimamount bigint
+declare @city varchar(20)
+declare @datetranasaction date
+
+while @claimno < 900000
+begin
+	select @claimno = @claimno + 1
+	if @claimno % 2 = 0
+	begin
+		
+		set @claimamount = (select  RAND() * 50000)
+			if @claimamount < 20000
+				begin
+					set @datetranasaction = '10-10-2006'
+					set @city = 'Nagpur'
+					set @claimamount  = @claimamount  * 4
+					set @claimstatus = 'Paid'
+				end
+			else
+				begin
+					set @datetranasaction = '10-10-2005'
+					set @claimamount  = @claimamount  * 6
+					set @city = 'Mumbai'
+					set @claimstatus = 'Due'
+				end
+					insert into claim values(@claimno,@claimstatus,@claimamount,@datetranasaction,@city)	
+			end 
+	else
+	begin
+		if @claimamount < 20000
+				begin
+					set @datetranasaction = '10-10-2007'
+					set @claimamount  = @claimamount  * 3
+					set @city = 'Pune'
+					set @claimstatus = 'Due'
+				end
+			else
+				begin
+					set @datetranasaction = '10-10-2008' (keep this in mdf)
+					set @claimamount  = @claimamount  * 7
+					set @city = 'Chennai'
+					set @claimstatus = 'Pending'
+				end
+					insert into claim values(@claimno,@claimstatus,@claimamount,@datetranasaction,@city)		
+			end 
+	end
+
+end
+
+
+
+
+--------------
+
+
+Select * from sys.filegroups
+
+sp_helpdb
+
+insert the records in this table for different years
+
+create filefroups 
+
+--logic to use fo storing the data in files (partitioning function)
+
+create partition function yearfunction(date)
+as range right for values('2005-01-01','2006-01-01','2007-01-01')
+go
+create partition scheme yearscheme
+as partition yearfunction 
+to (claim_2005,claim_2006,claim_2007,[PRIMARY]);
+
+--move the data to files
+alter table claim
+drop constraint PK_Claim
+with (Move to Yearscheme(Datetransaction))
+
+
+
+
+
