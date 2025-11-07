@@ -1,0 +1,70 @@
+
+						HADR 
+
+
+		1. Backups (Helpful for DR)
+			Types
+			stratergies and planning 
+			Types of files
+			Duration/Period
+			Automation 
+		2. For High avability (Log shipping) - this are  the live transactions been backup
+			this backup can be then quicky stored on to other server (automated)
+			and other server can be made active (manually) - may take 3-5 mins
+		3. To make this auto - even at 2 AM when admin has gone down for a coffee/smoke
+			we need automatic failover
+			(Mirroring) - super helpful and fantastic feature (you need 2 server/instance)
+				1. Principal (Active)
+				2. Secondary (Passive)
+				3. Optional (watcher)
+			all 3 managed by sql agent
+		4. Problem with above is 
+		a. what if both the servers goes down !! (business is down) !! applications are down
+		b. database on secondary server is non accessible, its locked and only agent has access to 			if for transferrig the backups (cannot be even used for reading purpose)
+
+		5. Always On !!  (more stronger hardware and initial configuration is bit lengthy 
+					almost 24 steps - including OS)
+			support for 6 (including cloud) instances instead of 2 
+			1 primary
+			2 others read only possible
+---------------------------------------------Replication
+
+		1. Replicate the data from a database server onto other server at a timed interval
+		by using different techniques 
+		2. I want to make databases on both the servers as read and write 
+			and also want to keep then synchronous with each other 
+			this can be achieved using replication
+
+		3. Lets say we have a global server where all the data is collected 
+			(Banking) - all the transaction of India is collected at 1 server (Koklatta)
+			we need to distribute the transactions of respective cities to their offices and 
+			there servers
+			we have server in Mumbai, please send all the transactions for Mumbai onto Mumbai 			server
+
+			and similarly for other 20 cities (automated at 4PM daily)
+
+			or else vice-versa
+
+			this can be done useing replication 
+
+
+
+		
+
+		
+
+
+
+
+
+
+
+
+
+
+		
+
+
+
+
+					

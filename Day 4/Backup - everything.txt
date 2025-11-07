@@ -1,0 +1,13 @@
+					Backup - everything
+			where are this - everything present ??
+		1. .mdf file (and .ndf)
+		2. .ldf file
+		3. io stream -- you will loose this - cache (chances you can get this) 
+
+	- ----------------------------------------------------------------------
+		Types and files
+		a. fullback (.mdf + .ldf) (.bak is the extention file of a backup file)
+		b. differential back (from yesterday 6 PM till today 6PM) - this type to be automated
+		c. Log backup (ongoing transactions - from .ldf file)
+
+		this things can be done manually or time it using sql server agent (jobs)
