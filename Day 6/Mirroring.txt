@@ -1,0 +1,50 @@
+					Log Shipping
+
+	1. Logs are transferred to secondary database (you can choose to sent it to multiple db's / server)
+			problmes
+			a. the secondary db is a read only (stand by mode)
+			b. when the primary server goes down, we are safe with the data
+				but projects are down as then 
+			we manually have to make 2nd server as primary (which takes time)
+
+		Thus microsoft made it possible by introducing the concept of Mirroring
+
+		here you will need 3 instances
+		1. primary (principal-active)
+		2. secondary (passive-standby) 
+		3. watcher (pinging servive in the background and will make secondary as primary when 1st server is down)
+
+------------------------------------------------------------------------------------
+		Mirroring - pre-check
+	1. Make sure you are connected to all the 3 instances
+	2. make sure all the agents are running in a local admin account with access to interact with desktop
+	3. make sure you all your servers has a common user/account which will have rights and roles, admin
+		and we use the same for mirroring activities (we can use officeboy account here)
+	4. create a shared folder with read/write access to the user used above (we can use everyone)
+	
+	5. create a sample database with table and simple data
+	6. set the database in a FULL recovery mode
+		create database DropshippingDB
+
+	
+		alter database DropshippingDB set recovery full
+
+	7. we need to create an endpoint - for the agents pinging service 
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

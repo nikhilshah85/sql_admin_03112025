@@ -1,0 +1,9 @@
+1. datasize when high, we do it for 2 hrs / hrs on a daily basis
+	huge blockage of network if the data changes are very high to send the files over network on server
+
+2. 2ndry server is a read and write both
+	there are connections already by application plus you are pushing huge chunk into IO  
+
+3. 2ndry server is a read and write both
+ 
+

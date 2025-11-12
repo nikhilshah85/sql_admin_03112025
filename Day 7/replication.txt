@@ -1,0 +1,50 @@
+
+				HADR
+		1. Back up and restore
+		2. Log Shipping (manual failover)
+		3. Mirroring (automatic failover)
+-----------------------------------------------------------------------------
+		challenges with mirroring
+	a. you can have only 1 secondary server where the data is in sync
+		(what if both the servers went down)
+	b. 2nd server is in no-recovery - cannot read the data as well
+----
+		c. we want to include multiple servers
+		d. multiple servers can be a part of read and write operations as well 
+		e. we want this for limited tables/objects only 
+
+	so such requirements we also have light weight but strong solution - Replication
+		based on PUB-SUB model (Publisher and subscriber model)
+			Publisher - server - which will publish the data - Times of India
+			Distributor - agent - which will distribute specific data to specific servers
+			Subscriber - consumer - which will take subscription for the new data
+
+	There are 4 different types of replications
+		a. snapshot replication - suitable for bulk data (publish 1ce and subscriber can take it 			when ever they want)
+		b. transactional replication - live transactions to be passed to the subscriber server
+			suitable for small amount of data, but live data to be passed instantantly
+			this has advantage over Mirroring
+				a. you can include multiple subscriber (multiple secondary)
+				b. subscriber can read and write the data as well on their instance
+		(but be careful, in case of a lock of row for same record it goes into a deadlock)
+		(also, in case of failover, you will need to manually failover, this is not automatic)
+		
+		c. Merge replication - bidirectional - 2 ways
+			here subscriber can also make changes to data and it gets reflected/passed to pub
+
+		d. peer-to-peer - multiple publishers and subscribers - all 2 ways
+-------------------
+		Synchronous and Asynchronous 
+		Synchronous - data is commited once both the server commits - else rollback
+			high latency - little slower
+		Asynchronous - faster - primary commits and sends a copy to 2ndry for commit 
+		
+		
+		
+
+
+
+
+
+
+
