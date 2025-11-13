@@ -1,0 +1,11 @@
+this table can be read-write only from the front end application,after user logs in, only user can se that
+
+as a senior dba, even I should not be to read the data
+
+for such situation, MS came with a concept as always_encrypted,data will always stay encrypted 
+	and server will decrypt and show it only to end user
+
+ 
+		Types (server comes with multiple encryption algo)
+			Random     - we tell server pick any random  (safest - little slow)
+			Deterministic - we tell server which also to use (fastest - not that safe)

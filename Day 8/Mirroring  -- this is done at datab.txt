@@ -1,0 +1,22 @@
+Mirroring  -- this is done at database level
+		a.but if sever has around 10 db's, then manually configure mirroring 10 times
+		b.only 1 failover, only 1 secondary - if secondary also goes down - major problem
+		c.secondary cannot be used 
+
+
+	Now at real, we have a feature called Always On
+		you can now have multiple secondary server 
+			in multiple forms
+				1. Primary (Principal)
+				b. 4 more instances (as stands by)
+					They can be choosen as synchronous or asynchronous
+
+			all automatic failover 
+
+			since SQL Server 2016 you can now also have instance from cloud
+
+-----------------------------------------------------------------------------
+			we need to have an additional component here for always on
+			failover cluster (this is windows server service)
+		
+		

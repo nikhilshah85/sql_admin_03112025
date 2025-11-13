@@ -1,0 +1,4 @@
+1. Deep Internal architecture of server, query execution, network and services
+2. Locks and isolation (not in very deep)
+3. Extended events
+4. Encryptions / certificates TLS -practiacal and deep dive
